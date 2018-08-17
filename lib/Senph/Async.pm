@@ -43,8 +43,7 @@ sub run {
             socktype => "stream",
             port     => $port,
         },
-        on_listen_error => sub { die "Cannot listen - $_[-1]\n" },
-    );
+    )->get;
     $log->infof( "Starting up on http://localhost:%i", $port );
 
     my $timer = IO::Async::Timer::Periodic->new(
